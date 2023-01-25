@@ -28,5 +28,11 @@ void print_list(const listint_t *list);
 /* bubble sort function */
 void bubble_sort(int *array, size_t size);
 
+/* insertion sort function */
+void insertion_sort_list(listint_t **list);
+
+
+
+
 
 #endif
