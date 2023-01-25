@@ -50,13 +50,29 @@ void radix_sort(int *array, size_t size)
 void count_sort(int *array, size_t size, int pos)
 {
 	int i;
-	int count[10] = {0}; /* initialize count to 0 */
-	int b[10]; /* ones/tenths/hundreths can only be single digit so 0 - 9 */
+	int *count, *position;
+
+	count = malloc(sizeof(int) * (size + 1));
+	if (count == NULL) /* malloc fails */
+	{
+		return;
+	}
+
+	position = malloc(sizeof(int) * size);
+	if (position == NULL) /* malloc fails */
+	{
+		return;
+	}
+
+	for (i = 0; i <= (int)size; i++)
+	{
+		count[i] = 0; /* initialize everything with 0 */
+	}
 
 	for (i = 0; i < (int)size; i++) /* iterate through array size */
 	{
 		/* increment every occurence of digit by 1 */
-		count[(array[i] / pos) % 10]++;
+		count[((array[i] / pos) % 10)]++;
 	}
 
 	for (i = 1; i < (int)size; i++)
@@ -65,16 +81,18 @@ void count_sort(int *array, size_t size, int pos)
 		count[i] = count[i] + count[i - 1];
 	}
 
-	for (i = size - 1; i >= 0; i--)
+	for (i = (int)(size - 1); i >= 0; i--)
 	{
 		/* store array items in correct position */
-		b[--count[(array[i] / pos) % 10]] = array[i];
+		position[--count[(array[i] / pos) % 10]] = array[i];
 	}
 
 	for (i = 0; i < (int)size; i++)
 	{
-		array[i] = b[i]; /* array now copies b */
+		array[i] = position[i]; /* array now copies position */
 	}
+	free(count); /* free count */
+	free(position); /* free position */
 }
 
 /**
