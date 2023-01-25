@@ -1,5 +1,6 @@
 #include "sort.h"
 
+void sort_array_size_2(int *array);
 void count_sort(int *array, size_t size, int pos);
 int get_max(int *array, size_t size);
 
@@ -22,6 +23,13 @@ void radix_sort(int *array, size_t size)
 		return;
 	}
 
+	if (size == 2) /* array of size 2 */
+	{
+		sort_array_size_2(array); /* call sort */
+		print_array(array, size); /* print array */
+		return;
+	}
+
 	/* get max integer */
 	max = get_max(array, size);
 
@@ -34,6 +42,31 @@ void radix_sort(int *array, size_t size)
 
 		/* print array for every digit place */
 		print_array(array, size);
+	}
+}
+
+/**
+ * sort_array_size_2 - sorts an array of size 2
+ *
+ * @array: array of integers
+ *
+ * Return: void
+ */
+
+void sort_array_size_2(int *array)
+{
+	int temp;
+
+	/* swap if first item is greater than second item */
+	if (array[0] > array[1])
+	{
+		temp = array[0];
+		array[0] = array[1];
+		array[1] = temp;
+	}
+	else /* no swap needed */
+	{
+		return;
 	}
 }
 
