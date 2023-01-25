@@ -17,12 +17,17 @@ void radix_sort(int *array, size_t size)
 {
 	int pos, max;
 
+	if (size < 2 || array == NULL) /* array does not need to sort */
+	{
+		return;
+	}
+
 	/* get max integer */
 	max = get_max(array, size);
 
 	/* pos tracks ones/tenths/hundredths of the max integer */
 	/* increases by (pos * 10) for every iteration */
-	for (pos = 1; max / pos > 0; pos = pos * 10)
+	for (pos = 1; (max / pos) > 0; pos = pos * 10)
 	{
 		/* count sort each digit place (ones/tenths/hundredths)*/
 		count_sort(array, size, pos);
