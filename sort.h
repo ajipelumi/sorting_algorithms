@@ -49,5 +49,7 @@ void counting_sort(int *array, size_t size);
 /* merge sort function */
 void merge_sort(int *array, size_t size);
 
+/* radix sort function */
+void radix_sort(int *array, size_t size);
 
 #endif
