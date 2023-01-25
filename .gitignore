@@ -1,5 +1,5 @@
 # Ignore all
-# *
+*.swp
 
 # Unignore all with extensions
 # !*.*

@@ -29,9 +29,5 @@ void bubble_sort(int *array, size_t size)
 				print_array(array, size); /* print every time swap occurs */
 			}
 		}
-		if (flag == 0) /* if no swap occurs */
-		{
-			break; /* array is sorted */
-		}
 	}
 }
