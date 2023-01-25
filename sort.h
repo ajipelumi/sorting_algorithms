@@ -40,4 +40,9 @@ void quick_sort(int *array, size_t size);
 /* shell sort function */
 void shell_sort(int *array, size_t size);
 
+/* cocktail sort function */
+void cocktail_sort_list(listint_t **list);
+
+
+
 #endif
