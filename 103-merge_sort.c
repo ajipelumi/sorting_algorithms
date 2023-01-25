@@ -3,6 +3,7 @@
 void divide(int *array, int size);
 void merge(int *array, int *left, int *right, int size);
 void merge_print(int *left, int *right, int n1, int n2);
+void merge_items(int *a, int *l, int *r, int n1, int n2, int i, int j, int k);
 
 /**
  * merge_sort - sorts an array of integers in ascending
@@ -81,6 +82,7 @@ void merge(int *array, int *left, int *right, int size)
 	int i, j, k, p;
 
 	merge_print(left, right, n1, n2); /* call print function */
+
 	i = 0, j = 0, k = 0;
 	while (i < n1 && j < n2) /* while looping through left and right items */
 	{
@@ -97,14 +99,9 @@ void merge(int *array, int *left, int *right, int size)
 			j++; /* increment right array index */
 		}
 	}
-	while (i < n1) /* loop through left array for items yet to be copied */
-		array[k] = left[i]; /* copy to array */
-		k++; /* increment array index */
-		i++; /* increment left array index */
-	while (j < n2) /* loop through right array for items yet to be copied */
-		array[k] = right[j]; /* copy to array */
-		k++; /* increment array index */
-		j++; /* increment left array index */
+
+	/* merge remaining items in both left and right arrays */
+	merge_items(array, left, right, n1, n2, i, j, k);
 
 	printf("[Done]: ");
 	for (p = 0; p < size; p++) /* loop through array to print array */
@@ -155,4 +152,36 @@ void merge_print(int *left, int *right, int n1, int n2)
 		}
 	}
 	printf("\n");
+}
+
+/**
+ * merge_items - merges items left in both arrays
+ *
+ * @a: array of integers
+ * @l: left side of the array
+ * @r: right side of the array
+ * @n1: size of left side
+ * @n2: size of right side
+ * @i: left index
+ * @j: right index
+ * @k: array index
+ *
+ * Return: void
+ */
+
+void merge_items(int *a, int *l, int *r, int n1, int n2, int i, int j, int k)
+{
+	while (i < n1) /* loop through left array for items yet to be copied */
+	{
+		a[k] = l[i]; /* copy to array */
+		k++; /* increment array index */
+		i++; /* increment left array index */
+	}
+
+	while (j < n2) /* loop through right array for items yet to be copied */
+	{
+		a[k] = r[j]; /* copy to array */
+		k++; /* increment array index */
+		j++; /* increment left array index */
+	}
 }
