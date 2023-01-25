@@ -22,18 +22,6 @@ void counting_sort(int *array, size_t size)
 		return;
 	}
 
-	for (i = 1; i < (int)size; i++) /* check for identical elements */
-	{
-		/* check every element with first element */
-		if (array[i] != array[0])
-		{
-			break;
-		}
-		if (i == (int)(size - 1)) /* last item met */
-		{
-			return; /* unneccessary to sort identical elements */
-		}
-	}
 	max = get_max(array, size);
 	count = malloc(sizeof(int) * (max + 1));
 	if (count == NULL) /* malloc fails */
@@ -41,7 +29,7 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i <= max; i++)
 		count[i] = 0; /* initialize everything with 0 */
 	for (i = 0; i < (int)size; i++)
-		count[array[i]] = 1; /* initialize array items with 1 */
+		count[array[i]]++; /* increase every occurence by 1 */
 
 	printf("%d, ", count[0]); /* print first item */
 	for (i = 1; i <= max; i++)
