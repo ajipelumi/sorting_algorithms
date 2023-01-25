@@ -13,7 +13,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp, *current;
 
-	if (!(*list)) /* list is empty */
+	if (!list || !*list) /* list is empty */
 	{
 		return;
 	}
