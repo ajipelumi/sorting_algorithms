@@ -45,7 +45,7 @@ void selection_sort(int *array, size_t size)
 			/* item at index is swapped with temp */
 			array[idx] = array[i];
 			array[i] = temp;
+			print_array(array, size); /* print array */
 		}
-		print_array(array, size); /* print array */
 	}
 }
