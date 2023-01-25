@@ -16,11 +16,24 @@ void swap(int *a, int *b);
 
 void quick_sort(int *array, size_t size)
 {
-	int start, end;
+	int i, start, end;
 
 	if (size < 2 || array == NULL) /* array does not need to sort */
 	{
 		return;
+	}
+
+	for (i = 1; i < (int)size; i++) /* check for identical elements */
+	{
+		/* check every element with first element */
+		if (array[i] != array[0])
+		{
+			break;
+		}
+		if (i == (int)(size - 1)) /* last item met */
+		{
+			return; /* unneccessary to sort identical elements */
+		}
 	}
 
 	start = 0; /* initiate start */
