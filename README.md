@@ -21,7 +21,7 @@ Complexity in this instance is a relative measure to something else.
 
 This project is a C implementation **Sorting Algorithms** and their time complexity.
 
-### Bubble Sort Algorithm
+## Bubble Sort Algorithm
 The `bubble_sort` function takes in an array of integers and its size as arguments. 
 It first checks if the array has less than 2 elements or if the array is NULL, in which case it returns without doing anything.
 
@@ -35,7 +35,7 @@ After each outer loop iteration, if the flag variable is still 0, it means that 
 - in the average case `O(n^2)`
 - in the worst case `O(n^2)`
 
-### Insertion Sort Algorithm
+## Insertion Sort Algorithm
 The `insertion_sort_list` function takes in a pointer to the head of the linked list as an argument. 
 It first checks if the list is empty or the pointer is null, in which case it returns without doing anything.
 
@@ -53,3 +53,77 @@ If the current node's value is less than or equal to the next node's value, the 
 - in the best case `O(n)`
 - in the average case `O(n^2)`
 - in the worst case `O(n^2)`
+
+## Selection Sort Algorithm
+The `selection_sort` function takes in an array of integers and its size as arguments.
+It first checks if the array has less than 2 elements or if the array is NULL, in which case it returns without doing anything.
+
+Otherwise, it uses two nested for loops to iterate through the array.
+In the outer loop, it starts from the first element and in each iteration, it saves the current element in a temporary variable and sets the current index as the index of the smallest number found so far.
+In the inner loop, it starts from the next element of the outer loop and compares it with the temporary variable.
+If it finds a number smaller than the temporary variable, it updates the temporary variable with the new smaller number and the index variable with the index of the new smaller number.
+
+At the end of the inner loop, it checks if the index variable has changed from its initial value, if it has, it swaps the element at that index with the current element and calls the `print_array` function to print the current state of the array.
+After the outer loop completes, the array will be sorted in ascending order.
+
+**Time Complexity**
+- in the best case `O(n^2)`
+- in the average case `O(n^2)`
+- in the worst case `O(n^2)`
+
+## Quick Sort Algorithm
+The `quick_sort` function takes in an array of integers and its size as arguments.
+It first checks if the array is empty or has less than 2 elements, in which case it returns as there is no need to sort the array.
+It then checks if the array has identical elements, in which case it also returns as there is no need to sort identical elements.
+
+If the array is not empty and has distinct elements, the function initializes the start and end indices and calls the `sort` function.
+The `sort` function is a recursive function that takes in the array, start index, end index, and size as arguments.
+It first checks if the start index is greater than or equal to the end index, in which case it returns as this is the base case.
+If not, it calls the `partition` function which partitions the array using a pivot element and returns the partitioned index.
+The function then recursively calls itself with the partitioned index and size as arguments to sort the array.
+
+The `partition` function takes in the array, low index, high index, and size as arguments.
+It sets the last element of the array as the pivot element and creates an index variable to track the items in the array.
+It then iterates through the array and compares each element with the pivot element.
+If the element is less than the pivot, it swaps it with the item at the index and increases the index by 1.
+It then swaps the pivot element with the item at the index and returns the partitioned index.
+
+The `swap` function is a helper function that takes in two integers as arguments and swaps their values.
+
+**Time Complexity**
+- in the best case `O(nlog(n))`
+- in the average case `O(nlog(n))`
+- in the worst case `O(n^2)`
+
+## Shell Sort Algorithm
+`Shell sort` is a sorting algorithm that sorts an array by comparing elements that are far apart from each other and sorting them.
+The `shell_sort` function sorts the array by first determining a gap value and then repeatedly sorting sublists of the array that are separated by the gap value. 
+It swaps the elements that are out of order and print the array after each swap till the array is sorted.
+
+**No big O notations of the time complexity of the Shell Sort (Knuth sequence) Algorithm as the complexity is dependent on the size of array and gap.**
+
+## Cocktail Shaker Sort Algorithm
+The **Cocktail Shaker Sort Algorithm** algorithm is a variation of the Bubble Sort algorithm,
+where the list is iterated through in both directions (forwards and backwards) in order to bubble up the largest element to the end and the smallest element to the front.
+The `cocktail_sort_list` function takes in a pointer to the head of the linked list, and sorts the list in ascending order.
+Cocktail uses a flag to check if the list is already sorted, and if so, the loop breaks.
+Cocktail also uses several helper functions: `swap`, `swap_last`, and `get_last_node` to assist in swapping nodes in the list and getting the last node in the list.
+
+**Time Complexity**
+- in the best case `O(n)`
+- in the average case `O(n^2)`
+- in the worst case `O(n^2)`
+
+## Counting Sort Algorithm
+The `counting_sort` function first checks if the array is NULL or has less than 2 elements, in which case it does not need to be sorted, and returns.
+It then calls the helper function `get_max` to determine the maximum value in the array.
+It then creates two arrays, *count* and *position*, and initializes all elements in count to 0.
+It then iterates through the input array and increments the count of each element.
+It then iterates through the count array, incrementing each element by the previous element, and printing the result.
+It then iterates through the input array again, storing each element in its correct position in the position array.
+Finally, it copies the position array into the input array and frees both the count and position arrays.
+
+**Time Complexity**
+- in the best case `O(n+k)`
+- in the average case `O(n+k)`
+- in the worst case `O(n+k)`
