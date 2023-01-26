@@ -127,3 +127,28 @@ Finally, it copies the position array into the input array and frees both the co
 - in the best case `O(n+k)`
 - in the average case `O(n+k)`
 - in the worst case `O(n+k)`
+
+## Merge Sort Algorithm
+The `merge_sort` function first checks if the array needs to be sorted (i.e. if its size is less than 2 or if the array is NULL) and returns if it doesn't. 
+Otherwise, it calls the `divide` function which recursively divides the array into two halves until the base case of a single element is reached.
+Then it calls the `merge` function which merges the left and right halves of the array in a sorted order.
+The `merge_print` function is called within `merge` to print the left and right arrays as the merging takes place.
+The `merge_items` function is also called within `merge` to merge any remaining items in both the left and right arrays.
+Finally, the `free` function is called to free the memory allocated for the left and right arrays.
+
+**Time Complexity**
+- in the best case `O(nlog(n))`
+- in the average case `O(nlog(n))`
+- in the worst case `O(nlog(n))`
+
+## Radix Sort Algorithm
+The `radix_sort` function takes in two parameters: an array of integers, and the size of the array.
+It first checks if the array is empty or has a size less than 2, in which case it returns without doing anything.
+If the array has a size of 2, it calls a separate function, `sort_array_size_2` to sort the array, and then prints the array.
+
+If the array has a size greater than 2, the function gets the maximum integer in the array by calling the `get_max` function.
+The function then iterates through the digits of the maximum integer, and for each digit, it calls the `count_sort` function to sort the array based on that digit.
+After each iteration, the function prints the array.
+
+## Authors
+- Ajisafe Oluwapelumi [@ajipelumi](https://github.com/ajipelumi)
